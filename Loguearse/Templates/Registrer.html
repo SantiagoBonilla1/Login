@@ -1,0 +1,20 @@
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <h1> Registro </h1>
+
+    {% if mensaje_error %}
+        <h4>Usuario o contraseña incorrecto</h4>
+    {% endif %}
+
+    <form action="{% url 'registrarse' %}" method="post">
+        {% csrf_token %}
+
+        {{ form|crispy }}
+
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+        <button onclick="window.location='../Login.html'">Logearse</button>
+
+    </form>
+
+{% endblock %}

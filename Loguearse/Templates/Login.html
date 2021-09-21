@@ -1,0 +1,21 @@
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <h1> Login </h1>
+
+    {% if mensaje_error %}
+            <h4>Datos ingresados de manera erronea, vuelva a intentar.</h4>
+    {% endif %}
+
+    <form action="{% url 'VistaLogueo' %}" method="post">
+        {% csrf_token %}
+        
+        {{ form|crispy }}
+
+        <button type="submit" class="btn btn-primary">Logearse</button>
+        <button onclick="window.location='../Register.html'">Registrarse</button>
+
+    </form>
+
+    
+{% endblock %}

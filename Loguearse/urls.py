@@ -21,7 +21,7 @@ from Login import views
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path('Login/', views.loguearse, name='VistaLogueo'),
-    path('Registro/', views.registrarse, name='VistaRegistro'),
+    path('Registro/', views.Registrarse, name='VistaRegistro'),
     path('', views.redirect_view_Login),
     path('Login.html/', views.redirect_view_Login),
     path('Register.html/', views.redirect_view_Register),

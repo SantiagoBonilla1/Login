@@ -1,0 +1,12 @@
+{% block content %}
+
+    {% if sessionkey %}
+        <H2>Bienvenido {{nombre}} a tu cuenta</H2>
+    {% else %}
+        <H2>Sesión inválida, vuelva a intentar</H2>
+    {% endif %}
+
+    {% if redireccionar %}
+        
+    {% endif %}
+{% endblock %}
