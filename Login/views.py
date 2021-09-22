@@ -33,7 +33,7 @@ def Registrarse(request):
         password = request.POST.get('password1')
         validar = validar_contraseña(password)
         if Registrar.is_valid() and validar:
-            #Registrar.save()
+            Registrar.save()
             return redirect('/Login/RegistroCompleto')
         else:
             if not validar:
