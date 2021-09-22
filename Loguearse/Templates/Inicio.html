@@ -1,12 +1,11 @@
 {% block content %}
 
-    {% if sessionkey %}
-        <H2>Bienvenido {{nombre}} a tu cuenta</H2>
-    {% else %}
-        <H2>Sesión inválida, vuelva a intentar</H2>
+    {% if user.is_authenticated %}
+        
+    <H2>Bienvenido "{{user.username}}" a tu cuenta</H2>
+
+    <button onclick="window.location='../../Inicio/Logout/'">Cerrar Sesión</button>
+
     {% endif %}
 
-    {% if redireccionar %}
-        
-    {% endif %}
 {% endblock %}
