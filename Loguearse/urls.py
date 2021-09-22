@@ -28,10 +28,8 @@ urlpatterns = [
     path('Login.html/', views.redirect_view_Login),
     path('Register.html/', views.redirect_view_Register),
     path('Inicio.html/', login_required(views.redirect_view_Inicio)),
-    path('Cambiar.html/', views.redirect_view_Cambiar),
     path('Inicio/', login_required(views.Inicio)),
     path('Inicio/Logout/', views.Logout, name='Salir'),
     path('accounts/login/', views.redirect_view_Login),
     path('Login/RegistroCompleto/', views.Login),
-    path('ChangePassword/', views.CambiarPass, name='CambiarPass'),
 ]

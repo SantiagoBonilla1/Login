@@ -4,7 +4,7 @@ from django.template import Template, Context
 from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import *
-from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 from .forms import UserCreationForm
 import re
 
@@ -33,7 +33,7 @@ def Registrarse(request):
         password = request.POST.get('password1')
         validar = validar_contraseña(password)
         if Registrar.is_valid() and validar:
-            Registrar.save()
+            #Registrar.save()
             return redirect('/Login/RegistroCompleto')
         else:
             if not validar:
@@ -44,10 +44,6 @@ def Registrarse(request):
     else:
         Registrar = UserCreationForm()
         return render(request, 'Register.html', {'form': Registrar})
-
-def CambiarPass(request):
-    CambiarContra = PasswordResetForm;
-    return render(request, 'Cambiar.html', {'form':CambiarContra})
     
 def Logout(request):
     logout(request)
@@ -68,9 +64,6 @@ def redirect_view_Register(request):
 
 def redirect_view_Inicio(request):
     return redirect('/Inicio/')
-
-def redirect_view_Cambiar(request):
-    return redirect('/ChangePassword/')
 
 def validar_contraseña(password):
     caracter_presenta_mayus = False
