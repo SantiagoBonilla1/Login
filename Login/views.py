@@ -65,22 +65,3 @@ def redirect_view_Register(request):
 def redirect_view_Inicio(request):
     return redirect('/Inicio/')
 
-def validar_contraseña(password):
-    caracter_presenta_mayus = False
-    caracter_presenta_numero = False
-    
-    contrasena = password
-    
-    if re.search('[A-Z]',contrasena):
-        caracter_presenta_mayus = True
-        print(re.search('[A-Z]',contrasena))
-    
-    if re.search('[0-9]',contrasena):
-        caracter_presenta_numero = True
-        print(re.search('[0-9]',contrasena))
-    
-    if caracter_presenta_mayus and caracter_presenta_numero:
-        print("Valido contraseña")
-        return bool(True)
-    else:
-        return bool(False)
