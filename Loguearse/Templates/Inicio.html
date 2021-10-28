@@ -1,0 +1,11 @@
+{% block content %}
+
+    {% if user.is_authenticated %}
+        
+    <H2>Bienvenido "{{user.username}}" a tu cuenta</H2>
+
+    <button onclick="window.location='../../Inicio/Logout/'">Cerrar Sesión</button>
+
+    {% endif %}
+
+{% endblock %}

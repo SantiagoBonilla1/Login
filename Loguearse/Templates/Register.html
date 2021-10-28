@@ -1,0 +1,25 @@
+{% load crispy_forms_tags %}
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <script type="text/javascript">
+            window.location='../../Inicio/'
+        </script>
+    {% endif %}
+
+    <h1> Registro </h1>
+
+    {% if mensaje %}
+        <h3>{{mensaje}}</h3>
+    {% endif %}
+
+    <form action="{% url 'VistaRegistro' %}" method="post">
+        {% csrf_token %}
+
+        {{ form|crispy }}
+
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+        <button onclick="window.location='../Login.html'">Logearse</button>
+
+    </form>
+{% endblock %}
