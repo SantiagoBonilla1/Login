@@ -33,4 +33,5 @@ urlpatterns = [
     path('accounts/login/', views.redirect_view_Login),
     path('Login/RegistroCompleto/', views.Login),
     path('Login/Register.html', views.redirect_view_Register),
+    path('Cambiar_Password/', views.ChangePass, name='CambiarPass'),
 ]
