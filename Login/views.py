@@ -6,6 +6,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import *
 from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 from .forms import UserCreationForm
+from datetime import date, tiemdelta
+
 import re
 
 def loguearse(request):
@@ -31,12 +33,15 @@ def Registrarse(request):
     if request.method == 'POST':
         Registrar = UserCreationForm(data=request.POST)
         password = request.POST.get('password1')
-        if Registrar.is_valid():
-            Registrar.save()
-            return redirect('/Login/RegistroCompleto')
-        else:
-            messages = ""
-            return render(request, 'Register.html',{'form': Registrar, 'mensaje':messages})
+        if date.today() - user.password_date > timedelta(days=30):
+            return redirect('/Cambiar_Password')
+        else:    
+            if Registrar.is_valid():
+                Registrar.save()
+                return redirect('/Login/RegistroCompleto')
+            else:
+                messages = ""
+                return render(request, 'Register.html',{'form': Registrar, 'mensaje':messages})
     else:
         Registrar = UserCreationForm()
         return render(request, 'Register.html', {'form': Registrar})
