@@ -6,6 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import *
 from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 from .forms import UserCreationForm
+from datetime import date, timedelta
 import re
 
 def loguearse(request):
@@ -15,11 +16,15 @@ def loguearse(request):
         nameUser = request.POST.get('username')
         namePassword = request.POST.get('password')
         if Logueo.is_valid():
-            user = authenticate(request, username=nameUser, password=namePassword)
+            user = authenticate(username=nameUser, password=namePassword)
             if user is not None:
-                login(request, user)
-                request.session['nombre'] = nameUser
-                return redirect('/Inicio/')
+                #if date.today() - user.date_joined > timedelta(days=30):
+                    #'Redirigir Cambiar_Password'
+                    #return redirect('/Cambiar_Password/')
+                #else:
+                    login(request, user)
+                    request.session['nombre'] = nameUser
+                    return redirect('/Inicio/')
             else:
                 return render(request, 'Login.html',{'form': Logueo})
         else:
@@ -40,6 +45,10 @@ def Registrarse(request):
     else:
         Registrar = UserCreationForm()
         return render(request, 'Register.html', {'form': Registrar})
+    
+def ChangePass(request):
+    ReseteoPass = PasswordResetForm
+    return render(request, 'CambiarPass.html', {'form': ReseteoPass})
     
 def Logout(request):
     logout(request)
