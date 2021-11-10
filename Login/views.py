@@ -18,10 +18,9 @@ def loguearse(request):
         if Logueo.is_valid():
             user = authenticate(username=nameUser, password=namePassword)
             if user is not None:
-                #if date.today() - user.date_joined > timedelta(days=30):
-                    #'Redirigir Cambiar_Password'
-                    #return redirect('/Cambiar_Password/')
-                #else:
+                if date.today() - user.password_date > timedelta(days=30):
+                    return redirect('/password_reset/')
+                else:
                     login(request, user)
                     request.session['nombre'] = nameUser
                     return redirect('/Inicio/')
@@ -35,7 +34,6 @@ def loguearse(request):
 def Registrarse(request):
     if request.method == 'POST':
         Registrar = UserCreationForm(data=request.POST)
-        password = request.POST.get('password1')
         if Registrar.is_valid():
             Registrar.save()
             return redirect('/Login/RegistroCompleto')
