@@ -40,7 +40,17 @@ INSTALLED_APPS = [
     'Loguearse',
     'Login',
     'crispy_forms',
+    'django_extensions',
+    'pydotplus',
+    'pydot',
+    'pyparsing',
+    'graphviz',
 ]
+
+GRAPH_MODELS = {
+    'all_applications': True,
+    'group_models': True,
+}
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -84,7 +94,7 @@ DATABASES = {
         'NAME': 'MDB',
         'USER': 'root',
         'PASSWORD': '1234',
-        'HOST': 'db',
+        'HOST': 'Mysql',
         'PORT': '3306'
     }
 }

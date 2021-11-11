@@ -7,3 +7,14 @@ Django
 	python manage.py migrate --noinput
 	python manage.py createsuperuser
 
+
+python manage.py graph_models -a -g -o models.png
+
+
+apt update && apt install -y ffmpeg libsm6 libxext6
+python -m pip install --upgrade pip
+
+
+apt-get install python-dev graphviz libgraphviz-dev pkg-config
+apt-get install python3-dev graphviz libgraphviz-dev pkg-config
+pip install pygraphviz

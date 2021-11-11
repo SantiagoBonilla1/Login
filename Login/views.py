@@ -4,7 +4,6 @@ from django.template import Template, Context
 from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import *
-from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 from .forms import UserCreationForm
 from datetime import date, timedelta
 import re
@@ -43,11 +42,11 @@ def Registrarse(request):
     else:
         Registrar = UserCreationForm()
         return render(request, 'Register.html', {'form': Registrar})
-    
-def ChangePass(request):
-    ReseteoPass = PasswordResetForm
-    return render(request, 'CambiarPass.html', {'form': ReseteoPass})
-    
+
+def LoginComplete(request):
+    print(request.POST.get('username'))
+    return redirect('/Login/')
+
 def Logout(request):
     logout(request)
     return redirect('/Login/')

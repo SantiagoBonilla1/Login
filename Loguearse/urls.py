@@ -34,8 +34,9 @@ urlpatterns = [
     path('accounts/login/', views.redirect_view_Login),
     path('Login/RegistroCompleto/', views.Login),
     path('Login/Register.html', views.redirect_view_Register),
+    path('Login/Complete', views.LoginComplete),
     
-    #path('Cambiar_Password/', views.ChangePass, name='CambiarPass'),
+    #path('password_reset/', auth_views.PasswordResetView.as_view(template_name='password_change.html',html_email_template_name='password_reset_email.html'),name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_done.html'), name="password_reset_done"),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_change.html'), name="password_reset_confirm"), 
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='password_change.html'), name="password_change"),

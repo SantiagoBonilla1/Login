@@ -9,16 +9,14 @@ services:
         volumes:
             - .:/code
         depends_on:
-            - db
-    db:
+            - Mysql
+    Mysql:
         container_name: django-base
         image: mysql:8.0.25 
         ports:
             - 3306:3306
         environment: 
             MYSQL_ROOT_PASSWORD: 1234
-            MYSQL_USERNAME: administrator
-            MYSQL_PASSWORD: 1234
             MYSQL_DATABASE: MDB
         volumes:
             - ./mysql:/var/lib/mysql
